@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Os7FGDevwJg41vNtbX+B6SL3G6LyDdSQxXXu7XHgM9BdQ2SCoV9QT3ufq57dZrjAp4Tj9jmp19wVPF6P+anU4w==",
+  "dgSpecHash": "+QrC8K0UWv+F4xiMW9oWVC1S01Bcw6XgYzNEW2TitjkzGQb6wiL+E185kN1g08weqft0hTh+UlF5DsTMj6DcPw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Softex\\C#\\API\\BoletoAPI\\BoletoAPI.csproj",
+  "projectFilePath": "C:\\Users\\Softex\\C#\\API\\ApiBoletos\\BoletoAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Softex\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Softex\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Softex\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Softex\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Softex\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.0\\microsoft.entityframeworkcore.6.0.0.nupkg.sha512",
     "C:\\Users\\Softex\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.0\\microsoft.entityframeworkcore.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\Softex\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.0\\microsoft.entityframeworkcore.analyzers.6.0.0.nupkg.sha512",

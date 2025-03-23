@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Softex\\C#\\API\\BoletoAPI\\BoletoAPI.csproj": {}
+    "C:\\Users\\Softex\\C#\\API\\ApiBoletos\\BoletoAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Softex\\C#\\API\\BoletoAPI\\BoletoAPI.csproj": {
+    "C:\\Users\\Softex\\C#\\API\\ApiBoletos\\BoletoAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Softex\\C#\\API\\BoletoAPI\\BoletoAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Softex\\C#\\API\\ApiBoletos\\BoletoAPI.csproj",
         "projectName": "BoletoAPI",
-        "projectPath": "C:\\Users\\Softex\\C#\\API\\BoletoAPI\\BoletoAPI.csproj",
+        "projectPath": "C:\\Users\\Softex\\C#\\API\\ApiBoletos\\BoletoAPI.csproj",
         "packagesPath": "C:\\Users\\Softex\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Softex\\C#\\API\\BoletoAPI\\obj\\",
+        "outputPath": "C:\\Users\\Softex\\C#\\API\\ApiBoletos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Softex\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,6 +38,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.0, )"

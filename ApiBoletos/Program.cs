@@ -1,10 +1,13 @@
 using BoletoAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(typeof(Program));
+
 
 builder.Services.AddSwaggerGen(c =>
 {

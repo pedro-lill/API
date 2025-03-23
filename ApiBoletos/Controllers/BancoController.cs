@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using BoletoAPI.Data;
-using BoletoAPI.Models;
 using BoletoAPI.DTOs;
+using BoletoAPI.Models;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace BoletoAPI.Controllers
@@ -11,26 +12,25 @@ namespace BoletoAPI.Controllers
     public class BancoController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IMapper _mapper;
 
-        public BancoController(AppDbContext context)
+        public BancoController(AppDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateBanco(BancoDTO bancoDto)
         {
-            var banco = new Banco
-            {
-                NomeBanco = bancoDto.NomeBanco,
-                CodigoBanco = bancoDto.CodigoBanco,
-                PercentualJuros = bancoDto.PercentualJuros
-            };
+            var banco = _mapper.Map<Banco>(bancoDto);
 
             _context.Bancos.Add(banco);
             await _context.SaveChangesAsync();
 
-            return Ok(banco);
+            var bancoDtoResult = _mapper.Map<BancoDTO>(banco);
+
+            return Ok(bancoDtoResult);
         }
 
         [HttpGet]
@@ -38,13 +38,7 @@ namespace BoletoAPI.Controllers
         {
             var bancos = await _context.Bancos.ToListAsync();
 
-            var bancosDto = bancos.Select(b => new BancoDTO
-            {
-                Id = b.Id,
-                NomeBanco = b.NomeBanco,
-                CodigoBanco = b.CodigoBanco,
-                PercentualJuros = b.PercentualJuros
-            }).ToList();
+            var bancosDto = _mapper.Map<List<BancoDTO>>(bancos);
 
             return Ok(bancosDto);
         }
@@ -57,13 +51,7 @@ namespace BoletoAPI.Controllers
 
             if (banco == null) return NotFound();
 
-            var bancoDto = new BancoDTO
-            {
-                Id = banco.Id,
-                NomeBanco = banco.NomeBanco,
-                CodigoBanco = banco.CodigoBanco,
-                PercentualJuros = banco.PercentualJuros
-            };
+            var bancoDto = _mapper.Map<BancoDTO>(banco);
 
             return Ok(bancoDto);
         }

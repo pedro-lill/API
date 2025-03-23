@@ -1,7 +1,9 @@
+
 using Microsoft.AspNetCore.Mvc;
 using BoletoAPI.Data;
-using BoletoAPI.Models;
 using BoletoAPI.DTOs;
+using BoletoAPI.Models;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace BoletoAPI.Controllers
@@ -11,31 +13,25 @@ namespace BoletoAPI.Controllers
     public class BoletoController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IMapper _mapper;
 
-        public BoletoController(AppDbContext context)
+        public BoletoController(AppDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateBoleto(BoletoDTO boletoDto)
         {
-            var boleto = new Boleto
-            {
-                NomePagador = boletoDto.NomePagador,
-                CpfCnpjPagador = boletoDto.CpfCnpjPagador,
-                NomeBeneficiario = boletoDto.NomeBeneficiario,
-                CpfCnpjBeneficiario = boletoDto.CpfCnpjBeneficiario,
-                Valor = boletoDto.Valor,
-                DataVencimento = boletoDto.DataVencimento,
-                Observacao = boletoDto.Observacao,
-                BancoId = boletoDto.BancoId
-            };
+            var boleto = _mapper.Map<Boleto>(boletoDto);
 
             _context.Boletos.Add(boleto);
             await _context.SaveChangesAsync();
 
-            return Ok(boleto);
+            var boletoDtoResult = _mapper.Map<BoletoDTO>(boleto);
+
+            return Ok(boletoDtoResult);
         }
 
         [HttpGet("{id}")]
@@ -52,18 +48,7 @@ namespace BoletoAPI.Controllers
                 boleto.Valor += boleto.Valor * (boleto.Banco?.PercentualJuros / 100 ?? 0);
             }
 
-            var boletoDto = new BoletoDTO
-            {
-                Id = boleto.Id,
-                NomePagador = boleto.NomePagador,
-                CpfCnpjPagador = boleto.CpfCnpjPagador,
-                NomeBeneficiario = boleto.NomeBeneficiario,
-                CpfCnpjBeneficiario = boleto.CpfCnpjBeneficiario,
-                Valor = boleto.Valor,
-                DataVencimento = boleto.DataVencimento,
-                Observacao = boleto.Observacao,
-                BancoId = boleto.BancoId
-            };
+            var boletoDto = _mapper.Map<BoletoDTO>(boleto);
 
             return Ok(boletoDto);
         }
